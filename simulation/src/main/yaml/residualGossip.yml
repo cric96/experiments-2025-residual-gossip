@@ -1,0 +1,18 @@
+incarnation: collektive
+
+network-model:
+  type: ConnectWithinDistance
+  parameters: [3]
+
+_pool: &program
+  - time-distribution: 1
+    type: Event
+    actions:
+      - type: RunCollektiveProgram
+        parameters: [ it.unibo.collektive.gossiping.ResidualGossipKt.residualGossipEntrypoint ]
+
+deployments:
+  - type: Grid
+    parameters: [0, 0, 10, 10, 1, 1, 0.25, 0.25]
+    programs:
+      - *program
